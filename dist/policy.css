@@ -22,3 +22,4 @@
 .product-details summary{min-height:44px}
 @media(max-width:767px){.facts span,.facts strong,.hero-image figcaption,.product .kind,.product-details,.product .button,.eyebrow{font-size:12px}.product-details summary{min-height:44px}.policy-content{padding-top:30px}.policy-content section p{font-size:16px}.policy-page header{min-height:100px}.policy-page header nav{gap:20px;font-size:13px}.policy-intro{font-size:17px}.policy-links{gap:8px 20px}}
 @media(prefers-reduced-motion:reduce){.phone-model{animation:none!important}}
+.hero-image figcaption{font-family:Manrope,Arial,sans-serif;font-size:18px;font-weight:800;color:var(--ink);padding:14px 2px;line-height:1.4}

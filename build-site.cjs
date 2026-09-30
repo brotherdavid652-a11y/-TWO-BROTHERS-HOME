@@ -47,7 +47,7 @@ for (let i=0;i<2;i++) {
   }
   phones += '</div>';
 }
-html = html.replace(/<div class="phone-stage">[\s\S]*?<\/figure>/, `<div class="phone-stage">${phones}</div><figcaption>Campaign illustration. Confirm actual colours and condition in store.</figcaption></figure>`);
+html = html.replace(/<div class="phone-stage">[\s\S]*?<\/figure>/, `<div class="phone-stage">${phones}</div><figcaption>iPhone 18 Pro Max</figcaption></figure>`);
 const policyLinks = '<nav class="policy-links" aria-label="Store policies"><a href="/terms">Terms of service</a><a href="/privacy">Privacy policy</a><a href="/refund-policy">Refund policy</a></nav>';
 html = html.replace(/<nav class="policy-links"[\s\S]*?<\/nav>/g, '');
 html = html.replace('</footer>',policyLinks+'</footer>');
