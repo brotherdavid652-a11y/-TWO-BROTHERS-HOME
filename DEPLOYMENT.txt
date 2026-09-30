@@ -1,0 +1,15 @@
+CLOUDFLARE PAGES
+
+Website: https://two-brothers-home.pages.dev
+GitHub: https://github.com/brotherdavid652-a11y/-TWO-BROTHERS-HOME
+Project: two-brothers-home
+Production branch: main
+Static website directory: dist
+Build command: none
+
+Deployment method: direct upload. Cloudflare's GitHub installation returned error 8000011; automatic deployments are not configured.
+
+To publish future changes after Cloudflare authentication:
+npx wrangler pages deploy dist --project-name two-brothers-home --branch main
+
+Online checkout remains unavailable.

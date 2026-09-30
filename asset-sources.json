@@ -1,0 +1,120 @@
+{
+  "hero": {
+    "file": "dist/assets/hero-burgundy.png",
+    "method": "Built-in image_gen tool; transparent background",
+    "references": [
+      "User screenshot",
+      "dist/assets/iphone-18-pro-max.jpg"
+    ],
+    "prompt": "Replace the old graphite devices with two burgundy iPhone 18 Pro Max front and rear views. Match the model-reference camera plateau, burgundy unibody, Dynamic Island, and luminous folded burgundy wallpaper. Premium studio materials, transparent background, no text or plinth, generous margin for animation.",
+    "motion": "Continuous 360-degree CSS Y-axis rotation, 12 seconds per turn; reduced-motion support; no pause button",
+    "geometry": "Slim 12px metal body, separate photographic faces, raised camera plateau, continuous 360-degree rotation; reduced-motion and off-screen playback support.",
+    "texture": {
+      "file": "dist/assets/phone-burgundy-realistic.png",
+      "method": "Built-in image_gen",
+      "prompt": "Photorealistic orthographic burgundy iPhone 18 Pro Max front/rear atlas. Fine-grain satin anodized aluminum, realistic optical glass, restrained wallpaper brightness and reflections, exact model-reference proportions. Transparent background, no perspective, no illustration or toy-like highlights."
+    }
+  },
+  "products": [
+    {
+      "file": "dist/assets/iphone-11.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/identify-iphone-11-colors.jpg",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-12.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/2021-iphone12-colors.png",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-12-pro.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-12-pro/iphone12-pro-colors.jpg",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-13.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/2022-spring-iphone13-colors.png",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-13-pro.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/2022-spring-iphone13-pro-colors.png",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-13-pro-max.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/2022-spring-iphone13-pro-max-colors.png",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-14.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-14-colors-spring-2023.png",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-15.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/fall-2023-iphone-colors-iphone-15.png",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-15-pro-max.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/fall-2023-iphone-colors-iphone-15-pro-max.png",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-16-pro-max.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-16-pro-max-colors.png",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-17-pro-max.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-17-pro-max-colors.png",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/iphone-18-pro-max.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-18-pro-max-colors.png",
+      "reference": "https://support.apple.com/en-us/108044",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/watch-series-6.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/apple-watch/apple-watch-series6-000-aluminum-gps-colors.png",
+      "reference": "https://support.apple.com/en-us/108056",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/watch-series-7.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/apple-watch/2021-apple-watch-series7-aluminum-gps.png",
+      "reference": "https://support.apple.com/en-us/108056",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/watch-series-8.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/apple-watch/fall-2022-watch-series8-aluminum-gps.png",
+      "reference": "https://support.apple.com/en-us/108056",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    },
+    {
+      "file": "dist/assets/watch-series-10.jpg",
+      "source": "https://cdsassets.apple.com/live/7WUAS350/images/apple-watch/apple-watch-series-10-aluminum-gps.png",
+      "reference": "https://support.apple.com/en-us/108056",
+      "usage": "Representative model-range imagery. Confirm reuse rights or replace with owner stock photography before public launch."
+    }
+  ],
+  "fonts": {
+    "source": "Google Fonts: Manrope and DM Sans",
+    "storage": "Self-hosted TTF files in dist/assets"
+  }
+}
