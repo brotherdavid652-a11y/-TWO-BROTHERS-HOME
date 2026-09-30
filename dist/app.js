@@ -26,7 +26,7 @@ const productNote=p=>p.category==='sealed'?'Listed as new, non-activated, and se
 function renderProducts(){
  const query=$('search').value.trim().toLowerCase().replace(/\s+/g,' ');
  const cap=$('budget').value==='all'?Infinity:Number($('budget').value);
- let list=products.filter(p=>(filter==='all'||p.category===filter)&&p.price<=cap&&(p.name+' '+p.spec).toLowerCase().includes(query));
+ let list=products.filter(p=>(filter==='all'||p.category===filter||(filter==='iphone'&&p.category==='sealed'))&&p.price<=cap&&(p.name+' '+p.spec).toLowerCase().includes(query));
  if($('sort').value==='low')list.sort((a,b)=>a.price-b.price);
  if($('sort').value==='high')list.sort((a,b)=>b.price-a.price);
  $('result-count').textContent=list.length+' product'+(list.length===1?'':'s');
@@ -34,6 +34,7 @@ function renderProducts(){
  $('products').innerHTML=list.length?list.map(p=>`<article class="product" id="${p.id}"><span class="kind">${categoryLabel(p)}</span><img src="assets/${p.image}.webp" alt="${p.name} representative model range" width="300" height="200" loading="lazy" decoding="async"><h3>${p.name}</h3><p class="spec">${p.spec}</p><p class="price">${money(p.price)}</p><button class="button" data-add="${p.id}" aria-label="Add to bag: ${p.name} ${p.spec}">Add to bag <span aria-hidden="true">+</span></button><details class="product-details"><summary>Device details</summary><p>${productNote(p)}</p></details></article>`).join(''):'<div class="empty"><h3>No matching products</h3><p>Try another model, increase your budget, or reset the filters.</p><button class="outline" id="reset-search">Reset filters</button></div>';
 }
 function setFilter(value){filter=value;document.querySelectorAll('[data-filter]').forEach(b=>{const active=b.dataset.filter===filter;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',String(active));});document.querySelectorAll('[data-category]').forEach(a=>{if(a.dataset.category===filter)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});renderProducts();}
+function chooseCollection(value){$('search').value='';$('budget').value='all';setFilter(value);}
 function announce(message){$('toast').textContent=message;$('toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('visible'),2800);}
 function addItem(id){const p=products.find(p=>p.id===id);if(!p)return false;const qty=bag.get(id)||0;if(qty>=99){announce('Maximum of 99 per item. This is not available stock.');return false;}bag.set(id,qty+1);renderBag();announce(p.name+' added to your bag');return true;}
 function subtotal(){return products.reduce((sum,p)=>sum+p.price*(bag.get(p.id)||0),0);}
@@ -43,15 +44,15 @@ function closeBag(){$('bag').close();lastTrigger?.focus();}
 function resetFilters(){$('search').value='';$('sort').value='featured';$('budget').value='all';setFilter('all');$('search').focus();}
 $('products').addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(b){addItem(b.dataset.add);b.classList.add('just-added');setTimeout(()=>b.classList.remove('just-added'),500);}if(e.target.closest('#reset-search'))resetFilters();});
 $('clear-filters').addEventListener('click',resetFilters);
-document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>setFilter(b.dataset.filter)));
-document.querySelectorAll('[data-category]').forEach(a=>a.addEventListener('click',()=>setFilter(a.dataset.category)));
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>chooseCollection(b.dataset.filter)));
+document.querySelectorAll('[data-category]').forEach(a=>a.addEventListener('click',()=>chooseCollection(a.dataset.category)));
 $('search').addEventListener('input',renderProducts);$('sort').addEventListener('change',renderProducts);$('budget').addEventListener('change',renderProducts);$('bag-open').addEventListener('click',openBag);$('bag-close').addEventListener('click',closeBag);$('continue').addEventListener('click',closeBag);
 $('bag-items').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.remove){const ids=[...bag.keys()],index=ids.indexOf(b.dataset.remove);bag.delete(b.dataset.remove);renderBag();const controls=$('bag-items').querySelectorAll('[data-remove]');(controls[Math.min(index,controls.length-1)]||$('bag-close')).focus();}if(b.dataset.change){const id=b.dataset.change,delta=Number(b.dataset.delta),next=(bag.get(id)||0)+delta;if(next<1||next>99)return;bag.set(id,next);renderBag();const target=$('bag-items').querySelector(`[data-change="${id}"][data-delta="${delta}"]`);if(target?.disabled)$('bag-items').querySelector(`[data-change="${id}"][data-delta="${-delta}"]`)?.focus();else target?.focus();}});
 $('review').addEventListener('click',()=>{if(!bag.size)return;$('bag').close();$('review-items').innerHTML=products.filter(p=>bag.has(p.id)).map(p=>`<div class="bag-row"><img class="bag-thumb" src="assets/${p.image}.webp" alt="" width="62" height="72"><div><h3>${p.name}</h3><p class="small">${p.spec} · Quantity ${bag.get(p.id)}</p></div><strong>${money(p.price*bag.get(p.id))}</strong></div>`).join('')+`<div class="total"><span>Product subtotal</span><span>${money(subtotal())}</span></div>`;$('review-dialog').showModal();$('review-title').focus();});
 $('review-close').addEventListener('click',()=>{$('review-dialog').close();openBag();});$('review-stores').addEventListener('click',()=>{$('review-dialog').close();location.hash='stores';const link=document.querySelector('#stores a');link.focus({preventScroll:true});});
 for(const id of ['bag','review-dialog'])$(id).addEventListener('cancel',()=>{setTimeout(()=>$('bag-open').focus(),0);});
 window.shopTools=Object.freeze({readCatalog:()=>products.map(p=>({...p})),readBag:()=>({items:products.filter(p=>bag.has(p.id)).map(p=>({...p,quantity:bag.get(p.id)})),subtotal:subtotal(),currency:'GHS',orderSubmitted:false}),addItem});
-const hashCollections={'#iphones':'iphone','#sealed':'sealed','#watches':'watch'};
-function restoreCollection(){if(hashCollections[location.hash])setFilter(hashCollections[location.hash]);}
+const hashCollections={'#catalog':'all','#iphones':'iphone','#sealed':'sealed','#watches':'watch'};
+function restoreCollection(){if(hashCollections[location.hash])chooseCollection(hashCollections[location.hash]);}
 window.addEventListener('hashchange',restoreCollection);
 renderProducts();renderBag();restoreCollection();

@@ -24,6 +24,12 @@ assert(element('result-count').textContent==='18 products'&&element('clear-filte
 location.hash='#sealed';restoreCollection();
 assert(element('result-count').textContent==='2 products','direct sealed collection link');
 assert(element('products').innerHTML.includes('Device details'),'individual product details');
+chooseCollection('iphone');
+assert(element('result-count').textContent==='14 products'&&element('products').innerHTML.includes('iPhone 17 Pro Max')&&element('products').innerHTML.includes('iPhone 18 Pro Max'),'iPhones includes both sealed Pro Max models');
+element('search').value='iPhone 12';element('budget').value='3000';chooseCollection('sealed');
+assert(element('result-count').textContent==='2 products'&&element('search').value===''&&element('budget').value==='all','switching collections clears conflicting filters');
+location.hash='#catalog';restoreCollection();
+assert(element('result-count').textContent==='18 products','browse products restores the whole catalog');
 element('bag-items').listeners.click({target:{closest(){return {dataset:{remove:'iphone-13-128'}};}}});
 assert(window.shopTools.readBag().subtotal===0&&element('review').disabled,'remove item and disable empty review');
 for(let i=0;i<100;i++)window.shopTools.addItem('watch-series-6');
