@@ -13,3 +13,11 @@
   Cache-Control: public, max-age=3600, must-revalidate
 /phone-display.js
   Cache-Control: public, max-age=3600, must-revalidate
+/assets/*.webp
+  Content-Type: image/webp
+/assets/*.woff2
+  Content-Type: font/woff2
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
