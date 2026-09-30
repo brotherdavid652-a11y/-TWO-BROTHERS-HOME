@@ -3,11 +3,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
+const crypto = require('node:crypto');
 const dir = path.join(__dirname, 'dist');
 const base = 'https://two-brothers-home.pages.dev';
 const css=['styles.css','refinements.css','policy.css'].map(p=>fs.readFileSync(path.join(dir,p),'utf8')).join('\n');
 const sharedCss=css.replace(/\/\*[\s\S]*?\*\//g,'').replace(/\s+/g,' ').trim();
 const source = fs.readFileSync(path.join(dir, 'app.js'), 'utf8');
+const appVersion = crypto.createHash('sha256').update(source).digest('hex').slice(0,12);
 const nodes = {search:{value:''}, budget:{value:'all'}, sort:{value:'featured'}, 'result-count':{}, 'clear-filters':{}, products:{}};
 const context = {document:{getElementById:id=>nodes[id]}};
 const products = vm.runInNewContext(source.slice(0, source.indexOf('function setFilter')) + '\nrenderProducts(); products;', context);
@@ -28,7 +30,7 @@ const head = `<meta charset="utf-8"><meta name="viewport" content="width=device-
 <meta property="og:site_name" content="TWO BROTHERS HOME"><meta property="og:title" content="TWO BROTHERS HOME | iPhones & Apple Watches in Ghana"><meta property="og:description" content="Compare prices, choose your upgrade, and visit our Kumasi store or Cape Coast pickup point."><meta property="og:type" content="website"><meta property="og:url" content="${base}/"><meta property="og:locale" content="en_GH"><meta property="og:image" content="${base}/assets/phone-burgundy-realistic-v2.webp"><meta property="og:image:alt" content="Burgundy phone campaign illustration">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="TWO BROTHERS HOME | Your next upgrade"><meta name="twitter:description" content="iPhones and Apple Watches. Clear prices in Ghana cedis. Kumasi store and Cape Coast pickup."><meta name="twitter:image" content="${base}/assets/phone-burgundy-realistic-v2.webp">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="preload" as="image" href="/assets/phone-burgundy-realistic-v2.webp" fetchpriority="high"><link rel="preload" as="font" href="/assets/dm-sans-400.woff2" type="font/woff2" crossorigin><link rel="preload" as="font" href="/assets/manrope-800.woff2" type="font/woff2" crossorigin><style>${sharedCss}</style>
-<script type="application/ld+json">${JSON.stringify(schema)}</script><script src="/app.js" defer></script><script src="/motion.js" defer></script><script src="/phone-display.js" defer></script>`;
+<script type="application/ld+json">${JSON.stringify(schema)}</script><script src="/app.js?v=${appVersion}" defer></script><script src="/motion.js" defer></script><script src="/phone-display.js" defer></script>`;
 html = html.replace(/<head>[\s\S]*?<\/head>/, '<head>'+head+'</head>');
 html = html.replace('Clear prices, two local stores, and more choice for your budget.', 'Clear prices, a local store in Kumasi, and a pickup point at Dr Wash, Ayensu, UCC, Cape Coast.');
 html = html.replace('Find your nearest store.', 'Visit our Kumasi store or Cape Coast pickup point.');
