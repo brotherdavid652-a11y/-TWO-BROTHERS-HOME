@@ -1,0 +1,24 @@
+/* Shared policy layout and readability refinements. */
+.policy-links{display:flex;flex-wrap:wrap;gap:8px 26px;margin:20px 0 0;font-size:14px;white-space:normal}
+.policy-links a{min-height:44px;display:inline-flex;align-items:center;text-decoration:underline;text-underline-offset:5px}
+.policy-page header{position:relative}
+.policy-content{max-width:940px;padding-top:48px;padding-bottom:48px}
+.policy-content>.text-link{margin-bottom:38px}
+.policy-content h1{font-size:clamp(38px,6vw,60px);margin-bottom:22px}
+.policy-content .eyebrow{margin-bottom:18px}
+.policy-intro{font-size:19px;max-width:58ch;color:var(--muted)}
+.policy-content section{padding:26px 0 12px;border-top:1px solid var(--line);margin-top:26px}
+.policy-content section h2,.policy-contact h2{font-size:24px;letter-spacing:-.035em}
+.policy-content section p{font-size:16px;line-height:1.85}
+.policy-content p a,.faq p a{text-decoration:underline;text-underline-offset:4px;color:var(--green)}
+.policy-contact{background:#e7ede6;border:1px solid #dce4d9;border-radius:12px;padding:28px;margin-top:36px}
+.policy-page header nav{font-size:14px}
+.policy-page footer{border-top:1px solid var(--line)}
+.phone-texture{position:absolute;inset:0;background-image:url('/assets/phone-burgundy-realistic-v2.webp');background-repeat:no-repeat;background-size:287% 100%;background-position:21% center}
+.phone-face-back .phone-texture{background-position:80% center}
+.hero-image{animation:none}
+.hero-copy>*{animation:none}
+.product .kind,.hero-image figcaption,.eyebrow{font-size:12px}
+.product-details summary{min-height:44px}
+@media(max-width:767px){.facts span,.facts strong,.hero-image figcaption,.product .kind,.product-details,.product .button,.eyebrow{font-size:12px}.product-details summary{min-height:44px}.policy-content{padding-top:30px}.policy-content section p{font-size:16px}.policy-page header{min-height:100px}.policy-page header nav{gap:20px;font-size:13px}.policy-intro{font-size:17px}.policy-links{gap:8px 20px}}
+@media(prefers-reduced-motion:reduce){.phone-model{animation:none!important}}

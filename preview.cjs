@@ -2,7 +2,7 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.join(__dirname, 'dist');
-const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.jpg':'image/jpeg','.png':'image/png','.ttf':'font/ttf'};
+const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.jpg':'image/jpeg','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.ttf':'font/ttf','.woff2':'font/woff2','.xml':'application/xml; charset=utf-8','.txt':'text/plain; charset=utf-8'};
 const server = http.createServer((req, res) => {
   let file;
   try {
@@ -14,6 +14,7 @@ const server = http.createServer((req, res) => {
     res.writeHead(403); return res.end('Forbidden');
   }
   if (file === root) file = path.join(root, 'index.html');
+  else if (!path.extname(file)) file += '.html';
   fs.readFile(file, (err, data) => {
     if (err) {res.writeHead(404); return res.end('Not found');}
     res.writeHead(200, {'Content-Type': types[path.extname(file)] || 'application/octet-stream', 'Cache-Control':'no-store'});

@@ -116,5 +116,11 @@
   "fonts": {
     "source": "Google Fonts: Manrope and DM Sans",
     "storage": "Self-hosted TTF files in dist/assets"
+  },
+  "optimization": {
+    "date": "2026-09-29",
+    "formats": "Locally compressed WebP images and WOFF2 fonts derived from the existing assets; original sources and artwork retained.",
+    "hero": "phone-burgundy-realistic-v2.webp",
+    "catalog": "WebP versions of the existing JPG model photos"
   }
 }

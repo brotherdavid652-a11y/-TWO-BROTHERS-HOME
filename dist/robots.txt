@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://two-brothers-home.pages.dev/sitemap.xml
